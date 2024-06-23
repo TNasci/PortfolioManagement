@@ -50,17 +50,17 @@ Para executar o sistema localmente, siga estas etapas:
 * Ao executar o projeto, você terá as seguinte opções de **endpoints**.
     - **Products CRUD:**
         - Onde você poderá fazer o cadastro, consulta, atualização e exclusão do seu produto.
-    <img src="https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/CrudProducts.PNG" alt="Products CRUD">
+    ![CRUD Products](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/CrudProducts.PNG)
     
     - **BuyAndSellProducts:**
         - Onde você poderá, fazer a compra e venda do seu produto, além de fazer consulta todos os produtos por cliente e individualmente um produto e seu cliente.
     ![Buy And Sell Products](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/BuyAndSellProducts.PNG)
     - **CreateRanDomMass:**
         - Caso não queira criar seus produtos um por um, temos a opção de gerar uma massa para teste, onde será criado **1000 produtos** aleatóriamente para conseguir executar os outros **endpoints**
-    ![Create Random Mass](https://drive.google.com/file/d/1Rqq6BQ0SY6xklluTa3VC6ZHyAlkcVLZh/view?usp=drive_link)
+    ![Create Random Mass](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/createRandomMass.PNG)
     - **SendEmail**
         - **Endpoint** que tem a finalidade de fazer o envio de e-mail.
-    ![Send Email](https://drive.google.com/file/d/1Vv7XqIwAkoIJykBCAmwclDc3YwcSlDXE/view?usp=drive_link)
+    ![Send Email](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/SendEmail.PNG)
 
 
 ### Contribuições e Melhorias
