@@ -54,7 +54,7 @@ Para executar o sistema localmente, siga estas etapas:
     
     - **BuyAndSellProducts:**
         - Onde você poderá, fazer a compra e venda do seu produto, além de fazer consulta todos os produtos por cliente e individualmente um produto e seu cliente.
-    ![Buy And Sell Products](https://drive.google.com/file/d/1Ny_xjy86mex59AJ0Tb-Ylo12t9CgRBj-/view?usp=drive_link)
+    ![Buy And Sell Products](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/BuyAndSellProducts.PNG)
     - **CreateRanDomMass:**
         - Caso não queira criar seus produtos um por um, temos a opção de gerar uma massa para teste, onde será criado **1000 produtos** aleatóriamente para conseguir executar os outros **endpoints**
     ![Create Random Mass](https://drive.google.com/file/d/1Rqq6BQ0SY6xklluTa3VC6ZHyAlkcVLZh/view?usp=drive_link)
