@@ -50,7 +50,7 @@ Para executar o sistema localmente, siga estas etapas:
 * Ao executar o projeto, você terá as seguinte opções de **endpoints**.
     - **Products CRUD:**
         - Onde você poderá fazer o cadastro, consulta, atualização e exclusão do seu produto.
-    ![Products CRUD](https://drive.google.com/file/d/14nIeRiMMw3pxaBAiENLvMEdEGPv1nH7Q/view?usp=drive_link)
+    <img src="https://drive.google.com/file/d/14nIeRiMMw3pxaBAiENLvMEdEGPv1nH7Q/view?usp=drive_link" alt="Products CRUD">
     
     - **BuyAndSellProducts:**
         - Onde você poderá, fazer a compra e venda do seu produto, além de fazer consulta todos os produtos por cliente e individualmente um produto e seu cliente.
