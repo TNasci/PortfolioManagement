@@ -30,6 +30,13 @@ O sistema foi projetado para suportar um grande volume de requisições, mantend
 ### Como Executar a Aplicação
 Para executar o sistema localmente, siga estas etapas:
 
+#### Setup.sh
+* Foi criado um arquivo .sh onde caso prefira, pode ser executado.
+Esse arquivo faz toda as instalações e executa as Migrations para o funcionamento adequado do projeto.
+Obs: Lembrando que préviamente você deve configurar a aplicação passando as informações do seu banco de dados.
+Para executar o arquivo pasta abri um CMD ou GitBash onde o arquivo se encontra, ou seja na raiz do projeto e colocar o seguinte comando:
+```./setup.sh```
+
 ####  1. Pré-requisitos:
 *  Instale o .NET SDK 6.0: [Download .Net](https://dotnet.microsoft.com/pt-br/download)
 * Certifique-se de ter um servidor SQL Server disponível ou ajuste a string de conexão para um banco de dados local ou em nuvem.
@@ -48,6 +55,9 @@ Para executar o sistema localmente, siga estas etapas:
 
 #### 5. Acessar a API:
 * Ao executar o projeto, você terá as seguinte opções de **endpoints**.
+    - **Clients CRUD:**
+        - Onde você poderá fazer o cadastro, consulta, atualização e exclusão de cliente.
+    ![CRUD Clients](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/Clients.PNG)
     - **Products CRUD:**
         - Onde você poderá fazer o cadastro, consulta, atualização e exclusão do seu produto.
     ![CRUD Products](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/CrudProducts.PNG)
@@ -61,7 +71,7 @@ Para executar o sistema localmente, siga estas etapas:
     - **SendEmail**
         - **Endpoint** que tem a finalidade de fazer o envio de e-mail.
     ![Send Email](https://github.com/TNasci/PortfolioManagement/blob/master/PortfolioManagement/Img/SendEmail.PNG)
-
+   Obs: Para o funcionamento adequado do envio de mensagens será necessário adicionar o seu email e senha no appsetting do projeto além de adicionar o email destinatário no serviço de email.
 
 ### Contribuições e Melhorias
 Este projeto está em constante evolução. Se você deseja contribuir ou sugerir melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request no GitHub.
