@@ -8,10 +8,10 @@ namespace PortfolioManagement.Services
 {
     public class EmailService
     {
-        private readonly PortfolioContext _context;
+        private readonly PortfolioManagementContext _context;
         private readonly IConfiguration _configuration;
 
-        public EmailService(PortfolioContext context, IConfiguration configuration)
+        public EmailService(PortfolioManagementContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;

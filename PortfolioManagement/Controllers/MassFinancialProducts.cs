@@ -6,8 +6,8 @@ namespace PortfolioManagement.Controllers
 {
     public class MassFinancialProducts : Controller
     {
-        private readonly PortfolioContext _context;
-        public MassFinancialProducts(PortfolioContext context)
+        private readonly PortfolioManagementContext _context;
+        public MassFinancialProducts(PortfolioManagementContext context)
         {
             _context = context;    
         }

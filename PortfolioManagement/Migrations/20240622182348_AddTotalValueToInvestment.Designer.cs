@@ -11,7 +11,7 @@ using PortfolioManagement.Data;
 
 namespace PortfolioManagement.Migrations
 {
-    [DbContext(typeof(PortfolioContext))]
+    [DbContext(typeof(PortfolioManagementContext))]
     [Migration("20240622182348_AddTotalValueToInvestment")]
     partial class AddTotalValueToInvestment
     {

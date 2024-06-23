@@ -9,14 +9,13 @@ namespace PortfolioManagement.Controllers
     [ApiController]
     public class FinancialProductsController : ControllerBase
     {
-        private readonly PortfolioContext _context;
+        private readonly PortfolioManagementContext _context;
 
-        public FinancialProductsController(PortfolioContext context)
+        public FinancialProductsController(PortfolioManagementContext context)
         {
             _context = context;
         }
 
-        // GET: api/FinancialProducts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FinancialProduct>>> GetFinancialProducts([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -28,7 +27,6 @@ namespace PortfolioManagement.Controllers
             return products;
         }
 
-        // GET: api/FinancialProducts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<FinancialProduct>> GetFinancialProduct(int id)
         {
@@ -42,7 +40,6 @@ namespace PortfolioManagement.Controllers
             return financialProduct;
         }
 
-        // POST: api/FinancialProducts
         [HttpPost]
         public async Task<ActionResult<FinancialProduct>> PostFinancialProduct(FinancialProduct financialProduct)
         {
@@ -52,7 +49,6 @@ namespace PortfolioManagement.Controllers
             return CreatedAtAction("GetFinancialProduct", new { id = financialProduct.Id }, financialProduct);
         }
 
-        // PUT: api/FinancialProducts/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFinancialProduct(int id, FinancialProduct financialProduct)
         {
@@ -82,7 +78,6 @@ namespace PortfolioManagement.Controllers
             return NoContent();
         }
 
-        // DELETE: api/FinancialProducts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFinancialProduct(int id)
         {

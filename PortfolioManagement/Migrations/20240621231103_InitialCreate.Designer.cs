@@ -11,7 +11,7 @@ using PortfolioManagement.Data;
 
 namespace PortfolioManagement.Migrations
 {
-    [DbContext(typeof(PortfolioContext))]
+    [DbContext(typeof(PortfolioManagementContext))]
     [Migration("20240621231103_InitialCreate")]
     partial class InitialCreate
     {

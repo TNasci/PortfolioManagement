@@ -9,14 +9,13 @@ namespace PortfolioManagement.Controllers
     [ApiController]
     public class InvestmentsController : ControllerBase
     {
-        private readonly PortfolioContext _context;
+        private readonly PortfolioManagementContext _context;
 
-        public InvestmentsController(PortfolioContext context)
+        public InvestmentsController(PortfolioManagementContext context)
         {
             _context = context;
         }
 
-        // POST: api/Investments/buy
         [HttpPost("buy")]
         public async Task<ActionResult> BuyProduct(int clientId, int productId, decimal quantity)
         {
@@ -53,7 +52,6 @@ namespace PortfolioManagement.Controllers
             return Ok("Compra realizada com sucesso.");
         }
 
-        // POST: api/Investments/sell
         [HttpPost("sell")]
         public async Task<ActionResult> SellProduct(int clientId, int productId, decimal quantity)
         {
@@ -89,7 +87,6 @@ namespace PortfolioManagement.Controllers
             return Ok("Venda realizada com sucesso.");
         }
 
-        // GET: api/Investments/statement
         [HttpGet("statement")]
         public async Task<ActionResult<IEnumerable<Investment>>> GetClientInvestments([FromQuery] int clientId, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -108,7 +105,6 @@ namespace PortfolioManagement.Controllers
             return Ok(investments);
         }
 
-        // GET: api/Investments/statement/{clientId}/{productId}
         [HttpGet("statement/{clientId}/{productId}")]
         public async Task<ActionResult<Investment>> GetInvestmentStatement(int clientId, int productId)
         {
