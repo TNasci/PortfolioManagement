@@ -19,6 +19,12 @@ namespace PortfolioManagement.Controllers
         [HttpPost("buy")]
         public async Task<ActionResult> BuyProduct(int clientId, int productId, decimal quantity)
         {
+            var client = await _context.Clients.FindAsync(clientId);
+            if (client == null)
+            {
+                return NotFound("Cliente não encontrado.");
+            }
+
             var product = await _context.FinancialProducts.FindAsync(productId);
             if (product == null)
             {
@@ -88,13 +94,30 @@ namespace PortfolioManagement.Controllers
         }
 
         [HttpGet("statement")]
-        public async Task<ActionResult<IEnumerable<Investment>>> GetClientInvestments([FromQuery] int clientId, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<object>>> GetClientInvestments([FromQuery] int clientId, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var investments = await _context.Investments
                 .Include(i => i.FinancialProduct)
+                .Include(i => i.Client)
                 .Where(i => i.ClientId == clientId)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
+                .Select(i => new
+                {
+                    i.Id,
+                    i.FinancialProductId,
+                    FinancialProductName = i.FinancialProduct.Name,
+                    FinancialProductType = i.FinancialProduct.Type,
+                    i.Quantity,
+                    i.PurchaseDate,
+                    i.TotalValue,
+                    ClientInfo = new
+                    {
+                        i.Client.CPF,
+                        i.Client.Nome,
+                        i.Client.Telefone
+                    }
+                })
                 .ToListAsync();
 
             if (investments == null || !investments.Any())
@@ -106,11 +129,29 @@ namespace PortfolioManagement.Controllers
         }
 
         [HttpGet("statement/{clientId}/{productId}")]
-        public async Task<ActionResult<Investment>> GetInvestmentStatement(int clientId, int productId)
+        public async Task<ActionResult<object>> GetInvestmentStatement(int clientId, int productId)
         {
             var investment = await _context.Investments
                 .Include(i => i.FinancialProduct)
-                .FirstOrDefaultAsync(i => i.ClientId == clientId && i.FinancialProductId == productId);
+                .Include(i => i.Client)
+                .Where(i => i.ClientId == clientId && i.FinancialProductId == productId)
+                .Select(i => new
+                {
+                    i.Id,
+                    i.FinancialProductId,
+                    FinancialProductName = i.FinancialProduct.Name,
+                    FinancialProductType = i.FinancialProduct.Type,
+                    i.Quantity,
+                    i.PurchaseDate,
+                    i.TotalValue,
+                    ClientInfo = new
+                    {
+                        i.Client.CPF,
+                        i.Client.Nome,
+                        i.Client.Telefone
+                    }
+                })
+                .FirstOrDefaultAsync();
 
             if (investment == null)
             {

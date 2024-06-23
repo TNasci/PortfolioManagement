@@ -27,7 +27,7 @@ namespace PortfolioManagement.Services
             {
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("Portfolio Management", _configuration["Smtp:Username"]));
-                message.To.Add(new MailboxAddress("Admin", "araujothiagonascimento@gmail.com"));
+                message.To.Add(new MailboxAddress("Admin", "email_adm"));
                 message.Subject = "Produtos Financeiros com Vencimento Próximo";
 
                 var bodyBuilder = new BodyBuilder

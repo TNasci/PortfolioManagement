@@ -11,7 +11,7 @@ using PortfolioManagement.Data;
 namespace PortfolioManagement.Migrations
 {
     [DbContext(typeof(PortfolioManagementContext))]
-    partial class PortfolioContextModelSnapshot : ModelSnapshot
+    partial class PortfolioManagementContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,6 +21,34 @@ namespace PortfolioManagement.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("PortfolioManagement.Models.Client", b =>
+                {
+                    b.Property<int>("ClientId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"), 1L, 1);
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("ClientId");
+
+                    b.ToTable("Clients");
+                });
 
             modelBuilder.Entity("PortfolioManagement.Models.FinancialProduct", b =>
                 {
@@ -34,14 +62,12 @@ namespace PortfolioManagement.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -74,6 +100,8 @@ namespace PortfolioManagement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("FinancialProductId");
 
                     b.ToTable("Investments");
@@ -81,13 +109,26 @@ namespace PortfolioManagement.Migrations
 
             modelBuilder.Entity("PortfolioManagement.Models.Investment", b =>
                 {
+                    b.HasOne("PortfolioManagement.Models.Client", "Client")
+                        .WithMany("Investments")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PortfolioManagement.Models.FinancialProduct", "FinancialProduct")
                         .WithMany()
                         .HasForeignKey("FinancialProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Client");
+
                     b.Navigation("FinancialProduct");
+                });
+
+            modelBuilder.Entity("PortfolioManagement.Models.Client", b =>
+                {
+                    b.Navigation("Investments");
                 });
 #pragma warning restore 612, 618
         }
